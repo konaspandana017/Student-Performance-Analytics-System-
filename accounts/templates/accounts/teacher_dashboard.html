@@ -1,0 +1,69 @@
+{% extends "accounts/base_dashboard.html" %}
+{% block title %}Teacher Dashboard{% endblock %}
+
+{% block content %}
+<div class="page-title">
+  <div>
+    <h2>Teacher Dashboard</h2>
+    <small>Monitor student progress and review analytics reports</small>
+  </div>
+  <small>Connect this with analytics_app later</small>
+</div>
+
+<div class="grid">
+  <div class="card span-4">
+    <h3>Total Students</h3>
+    <div class="stat">
+      <div class="num">{{ total_students }}</div>
+      <div class="tag">Available for review</div>
+    </div>
+  </div>
+
+  <div class="card span-4">
+    <h3>Reports</h3>
+    <div class="stat">
+      <div class="num">—</div>
+      <div class="tag">From analytics module</div>
+    </div>
+  </div>
+
+  <div class="card span-4">
+    <h3>Suggestions</h3>
+    <div class="stat">
+      <div class="num">—</div>
+      <div class="tag">From analytics module</div>
+    </div>
+  </div>
+
+  <div class="card span-6">
+    <h3>Quick Actions</h3>
+    <div class="links">
+      <a class="link" href="/analytics/">Open Analytics</a>
+      <a class="link" href="/analytics/reports/">View Reports (if added)</a>
+      <a class="link" href="/analytics/suggestions/">Suggestions (if added)</a>
+    </div>
+  </div>
+
+  <div class="card span-6">
+    <h3>Recent Logins</h3>
+    <ul class="list">
+      {% for u in recent_users %}
+        <li>
+          <span><b>{{ u.username }}</b></span>
+          <span class="pill">{{ u.last_login|date:"d M, h:i A" }}</span>
+        </li>
+      {% empty %}
+        <li><span>No recent logins</span><span class="pill">—</span></li>
+      {% endfor %}
+    </ul>
+  </div>
+
+  <div class="card span-12">
+    <h3>Teacher Notes</h3>
+    <ul class="list">
+      <li><span>Connect this page to subject-wise performance charts</span><span class="pill">Next</span></li>
+      <li><span>Add filters: class/section/department</span><span class="pill">Next</span></li>
+    </ul>
+  </div>
+</div>
+{% endblock %}

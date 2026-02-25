@@ -1,0 +1,47 @@
+{% extends "accounts/base_dashboard.html" %}
+{% block title %}Student Dashboard{% endblock %}
+
+{% block content %}
+<div class="page-title">
+  <div>
+    <h2>Student Dashboard</h2>
+    <small>Your progress summary (connect marks/attendance later)</small>
+  </div>
+  <small>Personal view</small>
+</div>
+
+<div class="grid">
+  <div class="card span-4">
+    <h3>Attendance</h3>
+    <div class="stat">
+      <div class="num">{{ attendance_pct }}%</div>
+      <div class="tag">Current estimate</div>
+    </div>
+  </div>
+
+  <div class="card span-4">
+    <h3>Average Score</h3>
+    <div class="stat">
+      <div class="num">{{ avg_score }}%</div>
+      <div class="tag">From marks</div>
+    </div>
+  </div>
+
+  <div class="card span-4">
+    <h3>Weak Subjects</h3>
+    <div class="stat">
+      <div class="num">{% if weak_subjects %}{{ weak_subjects|length }}{% else %}0{% endif %}</div>
+      <div class="tag">Needs focus</div>
+    </div>
+  </div>
+
+  <div class="card span-12">
+    <h3>Improvement Suggestions</h3>
+    <ul class="list">
+      {% for s in suggestions %}
+        <li><span>{{ s }}</span><span class="pill">Tip</span></li>
+      {% endfor %}
+    </ul>
+  </div>
+</div>
+{% endblock %}

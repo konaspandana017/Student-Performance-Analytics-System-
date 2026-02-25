@@ -1,0 +1,83 @@
+{% extends "accounts/base_dashboard.html" %}
+{% block title %}Admin Dashboard{% endblock %}
+
+{% block content %}
+<div class="page-title">
+  <div>
+    <h2>Admin Dashboard</h2>
+    <small>Manage users and monitor basic system usage</small>
+  </div>
+  <small>Tip: Use Django Admin for full CRUD</small>
+</div>
+
+<div class="grid">
+  <div class="card span-3">
+    <h3>Total Users</h3>
+    <div class="stat">
+      <div class="num">{{ total_users }}</div>
+      <div class="tag">All accounts</div>
+    </div>
+  </div>
+
+  <div class="card span-3">
+    <h3>Students</h3>
+    <div class="stat">
+      <div class="num">{{ total_students }}</div>
+      <div class="tag">Non-staff users</div>
+    </div>
+  </div>
+
+  <div class="card span-3">
+    <h3>Teachers</h3>
+    <div class="stat">
+      <div class="num">{{ total_teachers }}</div>
+      <div class="tag">Staff (not admin)</div>
+    </div>
+  </div>
+
+  <div class="card span-3">
+    <h3>Admins</h3>
+    <div class="stat">
+      <div class="num">{{ total_admins }}</div>
+      <div class="tag">Superusers</div>
+    </div>
+  </div>
+
+  <div class="card span-6">
+    <h3>Quick Actions</h3>
+    <div class="links">
+      <a class="link" href="/admin/auth/user/">Manage Users</a>
+      <a class="link" href="/admin/">Open Admin Panel</a>
+      <a class="link" href="/analytics/">Analytics Module</a>
+      <a class="link" href="/accounts/teacher-dashboard/">View Teacher Dashboard</a>
+      <a class="link" href="/accounts/student-dashboard/">View Student Dashboard</a>
+    </div>
+  </div>
+
+  <div class="card span-6">
+    <h3>Recent Logins</h3>
+    <ul class="list">
+      {% for u in recent_users %}
+        <li>
+          <span><b>{{ u.username }}</b></span>
+          <span class="pill">{{ u.last_login|date:"d M, h:i A" }}</span>
+        </li>
+      {% empty %}
+        <li>
+          <span>No recent logins yet</span>
+          <span class="pill">—</span>
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+
+  <div class="card span-12">
+    <h3>System Notes (For Review)</h3>
+    <ul class="list">
+      <li><span>Django authentication enabled</span><span class="pill">OK</span></li>
+      <li><span>Role logic: Admin / Teacher / Student dashboards</span><span class="pill">OK</span></li>
+      <li><span>Database: SQLite now → PostgreSQL final</span><span class="pill">Planned</span></li>
+    </ul>
+  </div>
+</div>
+{% endblock %}
