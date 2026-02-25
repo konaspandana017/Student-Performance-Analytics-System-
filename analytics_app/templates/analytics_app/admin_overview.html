@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %}Analytics Admin Overview{% endblock %}
+
+{% block content %}
+<h2>Analytics Admin Overview</h2>
+<p>Administrative summary for analytics records and setup progress.</p>
+
+<table>
+    <tr>
+        <th>Metric</th>
+        <th>Value</th>
+    </tr>
+    <tr>
+        <td>Total Students</td>
+        <td>{{ students_count }}</td>
+    </tr>
+    <tr>
+        <td>Total Marks Entries</td>
+        <td>{{ marks_count }}</td>
+    </tr>
+</table>
+{% endblock %}

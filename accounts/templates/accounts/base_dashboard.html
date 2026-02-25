@@ -268,7 +268,7 @@
         <span class="pill">
           {% if request.user.is_superuser %}Admin{% elif request.user.is_staff %}Teacher{% else %}Student{% endif %}
         </span>
-        <a class="btn" href="/accounts/logout/">Logout</a>
+        <a class="btn" href="{% url 'logout' %}">Logout</a>
       </div>
     </div>
   </div>

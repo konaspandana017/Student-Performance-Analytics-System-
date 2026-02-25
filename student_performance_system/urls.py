@@ -8,4 +8,5 @@ urlpatterns = [
     path('', home_redirect),  # THIS fixes 404 at /
     path('admin/', admin.site.urls),
     path('accounts/', include('accounts.urls')),
+    path('analytics/', include('analytics_app.urls')),
 ]

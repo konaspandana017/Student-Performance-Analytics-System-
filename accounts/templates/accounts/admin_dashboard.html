@@ -48,9 +48,11 @@
     <div class="links">
       <a class="link" href="/admin/auth/user/">Manage Users</a>
       <a class="link" href="/admin/">Open Admin Panel</a>
-      <a class="link" href="/analytics/">Analytics Module</a>
-      <a class="link" href="/accounts/teacher-dashboard/">View Teacher Dashboard</a>
-      <a class="link" href="/accounts/student-dashboard/">View Student Dashboard</a>
+      <a class="link" href="{% url 'analytics_home' %}">Analytics Module</a>
+      <a class="link" href="{% url 'analytics_admin_overview' %}">Analytics Admin Overview</a>
+      <a class="link" href="{% url 'analytics_admin_students' %}">Analytics Admin Students</a>
+      <a class="link" href="{% url 'teacher_dashboard' %}">View Teacher Dashboard</a>
+      <a class="link" href="{% url 'student_dashboard' %}">View Student Dashboard</a>
     </div>
   </div>
 

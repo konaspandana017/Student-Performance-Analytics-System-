@@ -1,3 +1,4 @@
+from django.contrib.auth import logout
 from django.contrib.auth.views import LoginView, LogoutView
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import redirect, render
@@ -16,6 +17,11 @@ class UserLoginView(LoginView):
 
 class UserLogoutView(LogoutView):
     next_page = "/accounts/login/"
+
+
+def logout_view(request):
+    logout(request)
+    return redirect("login")
 
 
 @login_required
@@ -71,10 +77,6 @@ def student_dashboard(request):
     }
     return render(request, "accounts/student_dashboard.html", ctx)
 
-from django.shortcuts import render, redirect
-from django.contrib import messages
-from .forms import SignupForm
-
 def signup_view(request):
     if request.method == "POST":
         form = SignupForm(request.POST)
@@ -83,7 +85,7 @@ def signup_view(request):
 
             messages.success(request, "Account created successfully. Please login.")
 
-            return redirect("accounts:login")  # redirect to login page
+            return redirect("login")
 
     else:
         form = SignupForm()

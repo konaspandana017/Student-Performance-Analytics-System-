@@ -1,7 +1,7 @@
 from django.urls import path
 from .views import (
     UserLoginView,
-    UserLogoutView,
+    logout_view,
     role_redirect,
     admin_dashboard,
     teacher_dashboard,
@@ -11,7 +11,7 @@ from .views import (
 
 urlpatterns = [
     path("login/", UserLoginView.as_view(), name="login"),
-    path("logout/", UserLogoutView.as_view(), name="logout"),
+    path("logout/", logout_view, name="logout"),
 
     path("signup/", signup_view, name="signup"),  # ✅ works now
 
