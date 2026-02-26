@@ -1,6 +1,9 @@
 {% extends 'base.html' %}
 
+{% block title %}Suggestions{% endblock %}
+
 {% block content %}
-<h3>Suggestions</h3>
-<p>{{ suggestion }}</p>
+<h2>Suggestions</h2>
+<p>Auto-generated recommendation based on current analytics data.</p>
+<h3>{{ suggestion }}</h3>
 {% endblock %}
